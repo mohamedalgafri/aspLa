@@ -1,0 +1,37 @@
+﻿@model List<Category>
+
+    <h1>Category</h1>
+
+    <hr />
+
+<a asp-controller="Category" asp-action="Create" class="btn btn-dark mb-3">Add New</a>
+
+@if(Model.Any()){
+    <table class="table table-hover">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach(var category in Model)
+        {
+            <tr>
+                <td>@category.Id</td>
+                <td>@category.Name</td>
+                <td>@category.CreatedAt.ToString("yyyy/MM/dd")</td>
+                <td>
+                    <a class="btn btn-dark ms-2" href="~/Admin/Category/Update/@category.Id">Update</a>
+                    <a class="btn btn-danger ms-2" href="~/Admin/Category/Delete/@category.Id">Delete</a>
+                </td>
+
+            </tr>
+        }
+
+    </table>
+}else{
+    <div class="alert alert-danger">
+        No data 
+    </div>
+}

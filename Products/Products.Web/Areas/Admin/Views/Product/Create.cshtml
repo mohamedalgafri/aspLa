@@ -1,0 +1,43 @@
+﻿@model CreateProductViewModel
+
+<h1>Add New Product</h1>
+<hr />
+
+<form asp-action="Create" enctype="multipart/form-data" >
+
+    <div class="row">
+           <div class="col-md-6 mb-2">
+               <div class="from-group">
+                <label class="label-control"> Product Name </label>
+                <input required asp-for="Name" class="form-control" />
+               </div>
+                <div class="from-group">
+                <label class="label-control">Product Description  </label>
+                <input  asp-for="Description" class="form-control" />
+               </div>
+           </div>
+
+        <div class="col-md-6 mb-2">
+            <div class="from-group">
+                <label class="label-control"> Product Price </label>
+                <input required asp-for="Price" class="form-control" />
+            </div>
+            <div class="from-group">
+                <label class="label-control">Product Image  </label>
+                <input type="file" asp-for="ImageUrl" class="form-control" />
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-2">
+            <div class="from-group">
+                <label class="label-control">Product Category  </label>
+                <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.CategoryList"></select>
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-primary " value="Save" />
+    <a asp-controller="Product" asp-action="index" class="btn btn-danger">Back</a>
+
+
+</form>

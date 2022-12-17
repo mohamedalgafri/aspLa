@@ -1,0 +1,22 @@
+﻿@model List<Product>
+@{
+
+}
+
+
+<div class="row gap-2 justify-content-center">
+@foreach(var x in Model)
+{
+
+        <div class="col-md-3 me-auto ms-auto ">
+                <div class="card" style="">
+        <img src="~/images/@x.ImageUrl" style="width:100%;" height="200" class="card-img-top " alt="...">
+        <div class="card-body">
+             <h5 class="card-title">@x.Name</h5>
+            <p class="card-text">@x.Description</p>
+                </div>
+            </div>
+        </div>
+
+}
+</div>

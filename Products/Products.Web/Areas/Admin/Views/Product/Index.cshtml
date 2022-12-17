@@ -1,0 +1,40 @@
+﻿@model List<Product>
+
+    <h1>Products</h1>
+
+    <hr />
+
+<a asp-controller="Product" asp-action="Create" class="btn btn-dark mb-3">Add New</a>
+
+@if(Model.Any()){
+    <table class="table table-hover">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Categoty</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Category.Name</td>
+                <td>@product.CreatedAt.ToString("yyyy/MM/dd")</td>
+                <td>
+                    <a class="btn btn-dark ms-2" href="~/Admin/Product/Update/@product.Id">Update</a>
+                    <a class="btn btn-danger ms-2" href="~/Admin/Product/Delete/@product.Id">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+}else{
+    <div class="alert alert-danger">
+        No data 
+    </div>
+}
